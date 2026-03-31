@@ -1,0 +1,752 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#111111" />
+  <meta name="description" content="Portfólio premium do atleta de Jiu-Jitsu Adrian Filipe Costa Rafalsky para captação de patrocinadores." />
+  <title>Adrian Filipe Costa Rafalsky | Jiu-Jitsu | Portfólio Premium</title>
+
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            bgdark: '#111111',
+            gold: '#D4AF77',
+            goldsoft: '#E6C99B',
+            whiteish: '#F5F5F5'
+          },
+          boxShadow: {
+            glow: '0 0 40px rgba(212,175,119,0.18)',
+            card: '0 18px 50px rgba(0,0,0,0.35)'
+          },
+          animation: {
+            fadeup: 'fadeUp 0.8s ease forwards'
+          },
+          keyframes: {
+            fadeUp: {
+              '0%': { opacity: '0', transform: 'translateY(24px)' },
+              '100%': { opacity: '1', transform: 'translateY(0)' }
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    html { scroll-behavior: smooth; }
+    body { background: #111111; color: #F5F5F5; }
+    ::selection { background: rgba(212,175,119,0.35); color: #ffffff; }
+
+    /* Fade-in on scroll */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 700ms ease, transform 700ms ease;
+      will-change: opacity, transform;
+    }
+    .reveal.visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Safer media sizing for broad compatibility */
+    img {
+      display: block;
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Smooth shadow for premium cards */
+    .premium-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+      border: 1px solid rgba(212,175,119,0.18);
+      backdrop-filter: blur(8px);
+    }
+
+    .hairline {
+      border-color: rgba(255,255,255,0.08);
+    }
+
+    .gold-line {
+      background: linear-gradient(90deg, transparent, rgba(212,175,119,0.85), transparent);
+      height: 1px;
+    }
+
+    .hero-overlay {
+      background:
+        linear-gradient(90deg, rgba(17,17,17,0.95) 0%, rgba(17,17,17,0.72) 42%, rgba(17,17,17,0.20) 100%),
+        radial-gradient(circle at top right, rgba(212,175,119,0.18), transparent 40%);
+    }
+
+    .stroke-gold {
+      text-shadow: 0 0 24px rgba(212,175,119,0.16);
+    }
+
+    /* Mobile menu animation */
+    .menu-panel {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 320ms ease;
+    }
+    .menu-panel.open {
+      max-height: 340px;
+    }
+  </style>
+</head>
+
+<body class="bg-bgdark text-whiteish antialiased font-sans">
+  <!-- HEADER -->
+  <header class="fixed top-0 inset-x-0 z-50 border-b hairline bg-bgdark/90 backdrop-blur-md">
+    <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+      <div class="flex h-16 items-center justify-between gap-4">
+        <a href="#top" class="flex items-center gap-3 min-w-0">
+          <div class="flex h-10 w-10 items-center justify-center rounded-full border border-gold/30 bg-white/5 shadow-glow">
+            <span class="text-gold font-bold" aria-hidden="true">AF</span>
+          </div>
+          <div class="min-w-0">
+            <p class="truncate text-sm font-bold tracking-[0.28em] text-gold uppercase">Adrian Rafalsky</p>
+            <p class="truncate text-[11px] text-white/60">Jiu-Jitsu | Portfólio Premium</p>
+          </div>
+        </a>
+
+        <nav class="hidden md:flex items-center gap-7 text-sm text-white/80">
+          <a class="hover:text-gold transition-colors" href="#sobre">Sobre</a>
+          <a class="hover:text-gold transition-colors" href="#metas">Metas</a>
+          <a class="hover:text-gold transition-colors" href="#titulos">Títulos</a>
+          <a class="hover:text-gold transition-colors" href="#beneficios">Parceria</a>
+          <a class="hover:text-gold transition-colors" href="#contato">Contato</a>
+        </nav>
+
+        <div class="hidden md:block">
+          <a href="https://wa.me/5527998805788" class="inline-flex items-center gap-2 rounded-full bg-green-500 px-5 py-2.5 text-sm font-bold text-white shadow-lg shadow-green-500/20 transition-transform duration-300 hover:-translate-y-0.5">
+            <span aria-hidden="true">✆</span>
+            Falar no WhatsApp
+          </a>
+        </div>
+
+        <button id="menuBtn" class="md:hidden inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5" aria-label="Abrir menu" aria-expanded="false" aria-controls="mobileMenu">
+          <span class="sr-only">Abrir menu</span>
+          <span class="flex flex-col gap-1.5">
+            <span class="h-0.5 w-5 bg-white"></span>
+            <span class="h-0.5 w-5 bg-white"></span>
+            <span class="h-0.5 w-5 bg-white"></span>
+          </span>
+        </button>
+      </div>
+
+      <div id="mobileMenu" class="menu-panel md:hidden pb-4">
+        <div class="grid gap-2 rounded-2xl border hairline bg-black/40 p-3">
+          <a class="rounded-xl px-4 py-3 text-sm text-white/80 hover:bg-white/5 hover:text-gold" href="#sobre">Sobre o Atleta</a>
+          <a class="rounded-xl px-4 py-3 text-sm text-white/80 hover:bg-white/5 hover:text-gold" href="#metas">Metas para 2025</a>
+          <a class="rounded-xl px-4 py-3 text-sm text-white/80 hover:bg-white/5 hover:text-gold" href="#titulos">Títulos e Conquistas</a>
+          <a class="rounded-xl px-4 py-3 text-sm text-white/80 hover:bg-white/5 hover:text-gold" href="#beneficios">Benefícios</a>
+          <a class="rounded-xl px-4 py-3 text-sm text-white/80 hover:bg-white/5 hover:text-gold" href="#contato">Contato e Redes</a>
+          <a href="https://wa.me/5527998805788" class="mt-1 inline-flex items-center justify-center gap-2 rounded-xl bg-green-500 px-4 py-3 text-sm font-bold text-white">
+            <span aria-hidden="true">✆</span>
+            Falar no WhatsApp
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main id="top" class="pt-16">
+    <!-- HERO -->
+    <section class="relative min-h-screen overflow-hidden">
+      <div class="absolute inset-0">
+        <!-- TODO: substituir pela foto real do atleta em ação no fundo do hero -->
+        <img
+          src="https://images.unsplash.com/photo-1549719386-74dfcbf7dbed?auto=format&fit=crop&w=1800&q=80"
+          alt="Atleta de Jiu-Jitsu em ação"
+          class="h-full w-full object-cover opacity-35"
+          loading="eager"
+          fetchpriority="high"
+        />
+        <div class="absolute inset-0 hero-overlay"></div>
+      </div>
+
+      <div class="relative mx-auto flex min-h-screen max-w-7xl items-center px-4 sm:px-6 lg:px-8 py-14 lg:py-20">
+        <div class="grid w-full items-center gap-12 lg:grid-cols-2">
+          <div class="reveal max-w-2xl">
+            <div class="mb-5 inline-flex items-center gap-2 rounded-full border border-gold/20 bg-white/5 px-4 py-2 text-xs font-semibold tracking-[0.2em] text-gold uppercase">
+              <span class="inline-block h-2 w-2 rounded-full bg-gold"></span>
+              Portfólio Premium de Patrocínio
+            </div>
+
+            <h1 class="font-black leading-[0.93] tracking-tight text-white text-4xl sm:text-5xl lg:text-7xl stroke-gold">
+              Adrian Filipe
+              <span class="block text-gold">Costa Rafalsky</span>
+            </h1>
+
+            <p class="mt-6 max-w-xl text-lg sm:text-xl font-semibold text-white/90">
+              Disciplina, evolução e busca por parceiros que acreditam no alto rendimento
+            </p>
+
+            <p class="mt-5 max-w-xl text-base sm:text-lg leading-8 text-white/70">
+              Atleta de Jiu-Jitsu em busca de patrocinadores para competir em alto nível, representando Cariacica-ES e a equipe Alternativa Jiu-Jitsu com postura, constância e presença competitiva.
+            </p>
+
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+              <a href="https://wa.me/5527998805788" class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-500 px-7 py-4 text-base font-extrabold text-white shadow-lg shadow-green-500/20 transition-all duration-300 hover:-translate-y-0.5 hover:shadow-xl hover:shadow-green-500/30">
+                <span aria-hidden="true">✆</span>
+                Falar no WhatsApp
+              </a>
+              <a href="#beneficios" class="inline-flex items-center justify-center gap-3 rounded-2xl border border-gold/40 bg-gold/10 px-7 py-4 text-base font-extrabold text-gold transition-all duration-300 hover:-translate-y-0.5 hover:bg-gold/15">
+                <span aria-hidden="true">▣</span>
+                Ver proposta de parceria
+              </a>
+            </div>
+
+            <div class="mt-10 grid grid-cols-2 gap-3 sm:grid-cols-5">
+              <div class="premium-card rounded-2xl px-4 py-4 text-center shadow-card">
+                <p class="text-xs uppercase tracking-[0.18em] text-white/45">Idade</p>
+                <p class="mt-1 text-sm font-bold text-white">18 anos</p>
+              </div>
+              <div class="premium-card rounded-2xl px-4 py-4 text-center shadow-card">
+                <p class="text-xs uppercase tracking-[0.18em] text-white/45">Peso</p>
+                <p class="mt-1 text-sm font-bold text-white">80 kg</p>
+              </div>
+              <div class="premium-card rounded-2xl px-4 py-4 text-center shadow-card">
+                <p class="text-xs uppercase tracking-[0.18em] text-white/45">Cidade</p>
+                <p class="mt-1 text-sm font-bold text-white">Cariacica - ES</p>
+              </div>
+              <div class="premium-card rounded-2xl px-4 py-4 text-center shadow-card">
+                <p class="text-xs uppercase tracking-[0.18em] text-white/45">Faixa</p>
+                <p class="mt-1 text-sm font-bold text-white">Azul</p>
+              </div>
+              <div class="premium-card rounded-2xl px-4 py-4 text-center shadow-card col-span-2 sm:col-span-1">
+                <p class="text-xs uppercase tracking-[0.18em] text-white/45">Equipe</p>
+                <p class="mt-1 text-sm font-bold text-white">Alternativa Jiu-Jitsu</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal flex justify-center lg:justify-end">
+            <div class="relative w-full max-w-md">
+              <div class="absolute -inset-4 rounded-[2rem] bg-gold/10 blur-2xl"></div>
+              <div class="relative overflow-hidden rounded-[2rem] border border-gold/30 bg-white/5 shadow-glow">
+                <!-- TODO: substituir pela foto real do rosto do atleta (close-up frontal, kimono visível) -->
+                <img
+                  src="https://images.unsplash.com/photo-1547996160-81dfa63595aa?auto=format&fit=crop&w=1200&q=80"
+                  alt="Rosto do atleta Adrian Filipe Costa Rafalsky em close-up"
+                  class="h-[540px] w-full object-cover object-top"
+                  loading="eager"
+                />
+                <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                <div class="absolute left-5 right-5 bottom-5 rounded-2xl border border-white/10 bg-black/40 p-4 backdrop-blur-md">
+                  <p class="text-xs uppercase tracking-[0.25em] text-gold">Imagem principal do portfólio</p>
+                  <p class="mt-1 text-sm text-white/85">Atleta preparado para representar marcas com credibilidade e constância.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="gold-line max-w-7xl mx-auto opacity-60"></div>
+
+    <!-- SOBRE -->
+    <section id="sobre" class="scroll-mt-24 px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal mb-10 max-w-2xl">
+          <p class="text-sm font-bold tracking-[0.25em] text-gold uppercase">Sobre o Atleta</p>
+          <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">Presença, disciplina e evolução constante</h2>
+        </div>
+
+        <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div class="reveal order-2 lg:order-1">
+            <div class="premium-card rounded-[2rem] p-6 sm:p-8 shadow-card">
+              <p class="text-base sm:text-lg leading-8 text-white/75">
+                Adrian Filipe Costa Rafalsky é um jovem atleta de Jiu-Jitsu focado em evolução constante, disciplina e alta performance. Treinando com seriedade na Alternativa Jiu-Jitsu, ele representa sua equipe e sua cidade em competições estaduais e nacionais.
+              </p>
+              <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                <div class="rounded-2xl border hairline bg-white/5 p-5">
+                  <p class="text-sm font-bold text-gold">Perfil competitivo</p>
+                  <p class="mt-2 text-sm leading-7 text-white/70">Treino orientado por consistência, mentalidade de performance e busca por resultados reais dentro e fora dos tatames.</p>
+                </div>
+                <div class="rounded-2xl border hairline bg-white/5 p-5">
+                  <p class="text-sm font-bold text-gold">Representação</p>
+                  <p class="mt-2 text-sm leading-7 text-white/70">Atleta com foco em representar patrocinadores com postura profissional e presença em eventos de destaque.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal order-1 lg:order-2">
+            <div class="relative overflow-hidden rounded-[2rem] border border-gold/25 shadow-card">
+              <!-- TODO: substituir pela foto real de apresentação (treino ou pose) -->
+              <img
+                src="https://images.unsplash.com/photo-1517836357463-d25dfeac3438?auto=format&fit=crop&w=1400&q=80"
+                alt="Atleta de Jiu-Jitsu em pose de apresentação"
+                class="h-[480px] w-full object-cover"
+                loading="lazy"
+              />
+              <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black/75 to-transparent p-6">
+                <p class="text-xs uppercase tracking-[0.2em] text-gold">Imagem de apresentação</p>
+                <p class="mt-1 text-sm text-white/80">Foto ideal para transmitir seriedade, foco e identidade esportiva.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- METAS -->
+    <section id="metas" class="scroll-mt-24 bg-black/40 px-4 sm:px-6 lg:px-8 py-20 lg:py-28 border-y hairline">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal text-center max-w-3xl mx-auto">
+          <p class="text-sm font-bold tracking-[0.25em] text-gold uppercase">Metas para 2025</p>
+          <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">Calendário de evolução e presença competitiva</h2>
+        </div>
+
+        <div class="mt-12 grid gap-5 lg:grid-cols-2 xl:grid-cols-4">
+          <article class="reveal premium-card rounded-[1.75rem] p-6 shadow-card">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="text-xs uppercase tracking-[0.2em] text-gold">Maio</p>
+                <h3 class="mt-2 text-xl font-bold text-white">Vila Velha/ES</h3>
+              </div>
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/10 border border-gold/20">
+                <span class="text-gold text-lg" aria-hidden="true">●</span>
+              </div>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-white/70">Primeira meta do período, com foco em ritmo de competição e construção de resultados consistentes.</p>
+            <!-- TODO: substituir por ícone/imagem da etapa -->
+            <div class="mt-5 rounded-2xl border border-dashed border-gold/25 bg-white/5 p-4 text-center text-xs text-white/45">Espaço para imagem/ícone do evento</div>
+          </article>
+
+          <article class="reveal premium-card rounded-[1.75rem] p-6 shadow-card">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="text-xs uppercase tracking-[0.2em] text-gold">Maio</p>
+                <h3 class="mt-2 text-xl font-bold text-white">Mundial da... (editável)</h3>
+              </div>
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/10 border border-gold/20">
+                <span class="text-gold text-lg" aria-hidden="true">★</span>
+              </div>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-white/70">Campo flexível para atualizar conforme confirmação oficial do campeonato.</p>
+            <div class="mt-5 rounded-2xl border border-dashed border-gold/25 bg-white/5 p-4 text-center text-xs text-white/45">Espaço editável para nome e arte do evento</div>
+          </article>
+
+          <article class="reveal premium-card rounded-[1.75rem] p-6 shadow-card">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="text-xs uppercase tracking-[0.2em] text-gold">Agosto</p>
+                <h3 class="mt-2 text-xl font-bold text-white">Vitória International Open 2025 IBJJF Jiu-Jitsu Championship</h3>
+              </div>
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/10 border border-gold/20">
+                <span class="text-gold text-lg" aria-hidden="true">▣</span>
+              </div>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-white/70">Etapa estratégica para ampliar visibilidade em um dos cenários mais relevantes do calendário.</p>
+            <div class="mt-5 rounded-2xl border border-dashed border-gold/25 bg-white/5 p-4 text-center text-xs text-white/45">Espaço para imagem do campeonato</div>
+          </article>
+
+          <article class="reveal premium-card rounded-[1.75rem] p-6 shadow-card">
+            <div class="flex items-start justify-between gap-4">
+              <div>
+                <p class="text-xs uppercase tracking-[0.2em] text-gold">Novembro</p>
+                <h3 class="mt-2 text-xl font-bold text-white">Mundial de Jiu-Jitsu CBJJE</h3>
+              </div>
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/10 border border-gold/20">
+                <span class="text-gold text-lg" aria-hidden="true">✦</span>
+              </div>
+            </div>
+            <p class="mt-4 text-sm leading-7 text-white/70">Objetivo final do ciclo, com foco em performance, ranking e projeção esportiva.</p>
+            <div class="mt-5 rounded-2xl border border-dashed border-gold/25 bg-white/5 p-4 text-center text-xs text-white/45">Espaço para imagem/ícone do mundial</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- TITULOS E CONQUISTAS -->
+    <section id="titulos" class="scroll-mt-24 px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal max-w-3xl">
+          <p class="text-sm font-bold tracking-[0.25em] text-gold uppercase">Títulos e Conquistas</p>
+          <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">Portfólio visual de resultados e consistência</h2>
+        </div>
+
+        <div class="mt-12 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          <div class="reveal premium-card rounded-[1.5rem] p-5 shadow-card">
+            <p class="text-sm font-bold text-white">2ª etapa Circuito Capixaba de Jiu-Jitsu</p>
+            <p class="mt-2 text-sm text-white/65">Participação competitiva com foco em evolução técnica.</p>
+          </div>
+          <div class="reveal premium-card rounded-[1.5rem] p-5 shadow-card">
+            <p class="text-sm font-bold text-white">3ª etapa Circuito Estadual FCJJE</p>
+            <p class="mt-2 text-sm text-white/65">Resultado importante dentro do cenário estadual.</p>
+          </div>
+          <div class="reveal premium-card rounded-[1.5rem] p-5 shadow-card">
+            <p class="text-sm font-bold text-white">4ª etapa Circuito Estadual FCJJE</p>
+            <p class="mt-2 text-sm text-white/65">Presença consistente em eventos de alta competitividade.</p>
+          </div>
+          <div class="reveal premium-card rounded-[1.5rem] p-5 shadow-card">
+            <p class="text-sm font-bold text-white">5ª etapa Circuito Estadual FCJJE</p>
+            <p class="mt-2 text-sm text-white/65">Construção de desempenho e regularidade.</p>
+          </div>
+          <div class="reveal premium-card rounded-[1.5rem] p-5 shadow-card">
+            <p class="text-sm font-bold text-white">6ª etapa Circuito Estadual FCJJE</p>
+            <p class="mt-2 text-sm text-white/65">Evolução contínua com foco em performance.</p>
+          </div>
+          <div class="reveal premium-card rounded-[1.5rem] p-5 shadow-card">
+            <p class="text-sm font-bold text-white">Copa Norte de Jiu-Jitsu</p>
+            <p class="mt-2 text-sm text-white/65">Experiência em competição relevante e valorizada.</p>
+          </div>
+          <div class="reveal premium-card rounded-[1.5rem] p-5 shadow-card">
+            <p class="text-sm font-bold text-white">8ª etapa Estadual FCJJE</p>
+            <p class="mt-2 text-sm text-white/65">Mais um marco no calendário competitivo.</p>
+          </div>
+          <div class="reveal premium-card rounded-[1.5rem] p-5 shadow-card">
+            <p class="text-sm font-bold text-white">9ª etapa Circuito Estadual FCJJE</p>
+            <p class="mt-2 text-sm text-white/65">Fechamento de ciclo com consistência e disciplina.</p>
+          </div>
+        </div>
+
+        <div class="reveal mt-8 rounded-[2rem] border border-gold/25 bg-gradient-to-r from-gold/10 via-white/5 to-gold/10 p-6 sm:p-8 shadow-card">
+          <div class="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p class="text-xs uppercase tracking-[0.25em] text-gold">Destaque</p>
+              <h3 class="mt-2 text-2xl sm:text-3xl font-black text-white">Múltiplos 1º lugar na categoria e 1º lugar absoluto</h3>
+            </div>
+            <div class="inline-flex items-center justify-center rounded-full border border-gold/30 bg-black/30 px-4 py-2 text-sm font-bold text-gold">
+              Resultado competitivo
+            </div>
+          </div>
+        </div>
+
+        <div class="reveal mt-10">
+          <div class="flex items-center justify-between gap-4 mb-5">
+            <div>
+              <p class="text-sm font-bold tracking-[0.25em] text-gold uppercase">Galeria de Provas</p>
+              <p class="mt-1 text-sm text-white/55">Espaços reservados para comprovação visual dos títulos e momentos de competição.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 md:grid-cols-3 lg:grid-cols-4">
+            <!-- TODO: substituir pelas imagens reais -->
+            <figure class="overflow-hidden rounded-2xl border hairline bg-white/5">
+              <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=900&q=80" alt="Foto de pódio" class="h-44 w-full object-cover" loading="lazy" />
+            </figure>
+            <figure class="overflow-hidden rounded-2xl border hairline bg-white/5">
+              <img src="https://images.unsplash.com/photo-1518459031867-a89b944bffe4?auto=format&fit=crop&w=900&q=80" alt="Medalha" class="h-44 w-full object-cover" loading="lazy" />
+            </figure>
+            <figure class="overflow-hidden rounded-2xl border hairline bg-white/5">
+              <img src="https://images.unsplash.com/photo-1510024235068-3ed5a2d7c2f8?auto=format&fit=crop&w=900&q=80" alt="Momento da luta" class="h-44 w-full object-cover" loading="lazy" />
+            </figure>
+            <figure class="overflow-hidden rounded-2xl border hairline bg-white/5">
+              <img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?auto=format&fit=crop&w=900&q=80" alt="Atleta no campeonato" class="h-44 w-full object-cover" loading="lazy" />
+            </figure>
+            <figure class="overflow-hidden rounded-2xl border hairline bg-white/5">
+              <img src="https://images.unsplash.com/photo-1534367610401-9f5ed68180aa?auto=format&fit=crop&w=900&q=80" alt="Detalhe do kimono" class="h-44 w-full object-cover" loading="lazy" />
+            </figure>
+            <figure class="overflow-hidden rounded-2xl border hairline bg-white/5">
+              <img src="https://images.unsplash.com/photo-1547347298-4074fc3086f0?auto=format&fit=crop&w=900&q=80" alt="Equipe e pódio" class="h-44 w-full object-cover" loading="lazy" />
+            </figure>
+            <figure class="overflow-hidden rounded-2xl border hairline bg-white/5">
+              <img src="https://images.unsplash.com/photo-1544117519-31a4b719223d?auto=format&fit=crop&w=900&q=80" alt="Treino intenso" class="h-44 w-full object-cover" loading="lazy" />
+            </figure>
+            <figure class="overflow-hidden rounded-2xl border hairline bg-white/5">
+              <img src="https://images.unsplash.com/photo-1517466787929-bc90951d0974?auto=format&fit=crop&w=900&q=80" alt="Foto de medalha e troféu" class="h-44 w-full object-cover" loading="lazy" />
+            </figure>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ROTINA -->
+    <section class="scroll-mt-24 bg-black/40 px-4 sm:px-6 lg:px-8 py-20 lg:py-28 border-y hairline">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div class="reveal order-2 lg:order-1">
+            <div class="premium-card rounded-[2rem] p-6 sm:p-8 shadow-card">
+              <p class="text-sm font-bold tracking-[0.25em] text-gold uppercase">Rotina de Atleta / Por que busco patrocínio</p>
+              <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">Ser atleta de Jiu-Jitsu é viver com disciplina, entrega total e paixão diária pelo esporte.</h2>
+              <p class="mt-6 text-base sm:text-lg leading-8 text-white/72">O treino faz parte da construção do resultado. A rotina exige constância, recuperação adequada e suporte para manter o nível competitivo ao longo da temporada.</p>
+
+              <div class="mt-8 grid gap-4 sm:grid-cols-2">
+                <div class="rounded-2xl border hairline bg-white/5 p-5">
+                  <p class="text-sm font-bold text-gold">Treino diário</p>
+                  <p class="mt-2 text-sm leading-7 text-white/70">Entre 3 e 4 horas por dia, com dedicação técnica, física e mental.</p>
+                </div>
+                <div class="rounded-2xl border hairline bg-white/5 p-5">
+                  <p class="text-sm font-bold text-gold">Custos recorrentes</p>
+                  <p class="mt-2 text-sm leading-7 text-white/70">Inscrições, viagens, hospedagem, suplementação e alimentação.</p>
+                </div>
+              </div>
+
+              <ul class="mt-8 grid gap-3 sm:grid-cols-2">
+                <li class="flex items-center gap-3 rounded-2xl border hairline bg-white/5 px-4 py-3 text-sm text-white/78"><span aria-hidden="true">•</span> Inscrições em campeonatos</li>
+                <li class="flex items-center gap-3 rounded-2xl border hairline bg-white/5 px-4 py-3 text-sm text-white/78"><span aria-hidden="true">•</span> Viagens para competir</li>
+                <li class="flex items-center gap-3 rounded-2xl border hairline bg-white/5 px-4 py-3 text-sm text-white/78"><span aria-hidden="true">•</span> Hospedagem e deslocamento</li>
+                <li class="flex items-center gap-3 rounded-2xl border hairline bg-white/5 px-4 py-3 text-sm text-white/78"><span aria-hidden="true">•</span> Suplementação e alimentação</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="reveal order-1 lg:order-2">
+            <div class="relative overflow-hidden rounded-[2rem] border border-gold/25 shadow-card">
+              <!-- TODO: substituir pela foto real de treino -->
+              <img
+                src="https://images.unsplash.com/photo-1605810230434-7631ac76ec81?auto=format&fit=crop&w=1400&q=80"
+                alt="Atleta treinando Jiu-Jitsu"
+                class="h-[560px] w-full object-cover"
+                loading="lazy"
+              />
+              <div class="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent"></div>
+              <div class="absolute left-5 right-5 bottom-5 rounded-2xl border border-white/10 bg-black/40 p-4 backdrop-blur-md">
+                <p class="text-xs uppercase tracking-[0.25em] text-gold">Foto de treino</p>
+                <p class="mt-1 text-sm text-white/80">Imagem ideal para transmitir rotina, seriedade e alta performance.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- BENEFICIOS -->
+    <section id="beneficios" class="scroll-mt-24 px-4 sm:px-6 lg:px-8 py-20 lg:py-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal max-w-3xl">
+          <p class="text-sm font-bold tracking-[0.25em] text-gold uppercase">Benefícios para sua marca</p>
+          <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">Visibilidade real, engajamento e conexão com o público do Jiu-Jitsu</h2>
+          <p class="mt-5 text-base sm:text-lg leading-8 text-white/70">Ao se tornar meu patrocinador, sua marca ganha visibilidade real, engajamento e conexão com o público do Jiu-Jitsu.</p>
+        </div>
+
+        <div class="mt-12 grid gap-5 lg:grid-cols-3">
+          <article class="reveal premium-card rounded-[2rem] p-6 sm:p-8 shadow-card">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gold/10 border border-gold/20">
+              <span class="text-gold text-2xl" aria-hidden="true">⌂</span>
+            </div>
+            <h3 class="mt-5 text-xl font-bold text-white">Logo no kimono em campeonatos</h3>
+            <p class="mt-3 text-sm leading-7 text-white/68">Sua marca aparece em competições, reforçando exposição com contexto esportivo e credibilidade.</p>
+          </article>
+
+          <article class="reveal premium-card rounded-[2rem] p-6 sm:p-8 shadow-card">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gold/10 border border-gold/20">
+              <span class="text-gold text-2xl" aria-hidden="true">◉</span>
+            </div>
+            <h3 class="mt-5 text-xl font-bold text-white">Postagens frequentes com marcação</h3>
+            <p class="mt-3 text-sm leading-7 text-white/68">Conteúdo nas redes sociais com marcações estratégicas, presença constante e reforço de parceria.</p>
+          </article>
+
+          <article class="reveal premium-card rounded-[2rem] p-6 sm:p-8 shadow-card">
+            <div class="flex h-14 w-14 items-center justify-center rounded-2xl bg-gold/10 border border-gold/20">
+              <span class="text-gold text-2xl" aria-hidden="true">✦</span>
+            </div>
+            <h3 class="mt-5 text-xl font-bold text-white">Citações em lives e entrevistas</h3>
+            <p class="mt-3 text-sm leading-7 text-white/68">Sua marca também ganha presença em fala, contexto e comunicação pública do atleta.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- COMO REPRESENTAREI SUA MARCA -->
+    <section class="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal rounded-[2.2rem] border border-gold/25 bg-gradient-to-br from-white/6 to-white/2 p-6 sm:p-8 lg:p-10 shadow-card">
+          <p class="text-sm font-bold tracking-[0.25em] text-gold uppercase">Como representarei sua marca</p>
+          <h2 class="mt-3 text-3xl sm:text-4xl font-black tracking-tight text-white">Presença consistente dentro e fora dos tatames</h2>
+
+          <div class="mt-8 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
+            <div class="rounded-2xl border hairline bg-black/25 p-5">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/10 border border-gold/20 text-gold font-bold">K</div>
+              <p class="mt-4 text-sm font-bold text-white">Logo no kimono</p>
+              <p class="mt-2 text-sm leading-7 text-white/65">Visual limpo, forte e alinhado à imagem do atleta.</p>
+            </div>
+            <div class="rounded-2xl border hairline bg-black/25 p-5">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/10 border border-gold/20 text-gold font-bold">R</div>
+              <p class="mt-4 text-sm font-bold text-white">Marca nas redes</p>
+              <p class="mt-2 text-sm leading-7 text-white/65">Menções e marcações em publicações estratégicas.</p>
+            </div>
+            <div class="rounded-2xl border hairline bg-black/25 p-5">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/10 border border-gold/20 text-gold font-bold">T</div>
+              <p class="mt-4 text-sm font-bold text-white">Menções em transmissões</p>
+              <p class="mt-2 text-sm leading-7 text-white/65">A marca aparece em lives, entrevistas e falas públicas.</p>
+            </div>
+            <div class="rounded-2xl border hairline bg-black/25 p-5">
+              <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-gold/10 border border-gold/20 text-gold font-bold">E</div>
+              <p class="mt-4 text-sm font-bold text-white">Presença em eventos</p>
+              <p class="mt-2 text-sm leading-7 text-white/65">Exposição em campeonatos, encontros e ativações esportivas.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISIBILIDADE -->
+    <section class="px-4 sm:px-6 lg:px-8 pb-20 lg:pb-28">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal rounded-[2rem] border border-gold/20 bg-gradient-to-r from-gold/12 via-white/5 to-black/30 p-7 sm:p-10 lg:p-12 shadow-card">
+          <p class="text-sm font-bold tracking-[0.25em] text-gold uppercase">Visibilidade garantida & parceria de valor</p>
+          <h2 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
+            A proposta é clara: associar o crescimento do atleta ao fortalecimento da sua marca, criando uma parceria de valor, alcance e credibilidade.
+          </h2>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTATO -->
+    <section id="contato" class="scroll-mt-24 bg-black/45 px-4 sm:px-6 lg:px-8 py-20 lg:py-28 border-y hairline">
+      <div class="mx-auto max-w-7xl">
+        <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+          <div class="reveal">
+            <p class="text-sm font-bold tracking-[0.25em] text-gold uppercase">Contatos e Redes</p>
+            <h2 class="mt-3 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white">Vamos construir presença e resultado juntos</h2>
+
+            <div class="mt-8 grid gap-4 sm:grid-cols-2">
+              <div class="rounded-2xl border hairline bg-white/5 p-5">
+                <p class="text-xs uppercase tracking-[0.2em] text-white/45">Instagram</p>
+                <p class="mt-2 text-lg font-bold text-white">@flp_bjj_027</p>
+              </div>
+              <div class="rounded-2xl border hairline bg-white/5 p-5">
+                <p class="text-xs uppercase tracking-[0.2em] text-white/45">Academia</p>
+                <p class="mt-2 text-lg font-bold text-white">@alternativa_jiujitsu</p>
+              </div>
+              <div class="rounded-2xl border hairline bg-white/5 p-5 sm:col-span-2">
+                <p class="text-xs uppercase tracking-[0.2em] text-white/45">WhatsApp</p>
+                <p class="mt-2 text-lg font-bold text-white">(27) 99880-5788</p>
+              </div>
+              <div class="rounded-2xl border hairline bg-white/5 p-5 sm:col-span-2">
+                <p class="text-xs uppercase tracking-[0.2em] text-white/45">E-mail</p>
+                <p class="mt-2 text-lg font-bold text-white/70">[campo editável]</p>
+              </div>
+            </div>
+
+            <div class="mt-8 flex flex-col sm:flex-row gap-4">
+              <a href="https://wa.me/5527998805788" class="inline-flex items-center justify-center gap-3 rounded-2xl bg-green-500 px-7 py-4 text-base font-extrabold text-white shadow-lg shadow-green-500/20 transition-transform hover:-translate-y-0.5">
+                <span aria-hidden="true">✆</span>
+                Falar no WhatsApp
+              </a>
+              <div class="inline-flex items-center justify-center rounded-2xl border border-gold/30 bg-white/5 px-7 py-4 text-sm text-white/70">
+                Espaço para assinatura digital ou logo
+              </div>
+            </div>
+          </div>
+
+          <div class="reveal">
+            <div class="premium-card rounded-[2rem] p-6 sm:p-8 shadow-card">
+              <div class="rounded-[1.6rem] border border-dashed border-gold/30 bg-black/30 p-6 sm:p-10 text-center">
+                <p class="text-xs uppercase tracking-[0.3em] text-gold">Área reservada</p>
+                <h3 class="mt-3 text-2xl font-black text-white">Logo, assinatura ou marca parceira</h3>
+                <p class="mt-3 text-sm leading-7 text-white/68">Substitua este bloco por uma assinatura digital, logotipo do atleta ou marca apoiadora quando quiser finalizar a versão comercial da página.</p>
+                <!-- TODO: substituir pela assinatura digital ou logo -->
+                <div class="mt-6 mx-auto flex h-36 w-full max-w-md items-center justify-center rounded-2xl border hairline bg-white/5 text-sm text-white/45">Espaço para logo / assinatura</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA FINAL -->
+    <section class="px-4 sm:px-6 lg:px-8 py-16 lg:py-20">
+      <div class="mx-auto max-w-7xl">
+        <div class="reveal overflow-hidden rounded-[2.2rem] border border-gold/30 bg-gradient-to-br from-gold/20 via-black/60 to-black p-8 sm:p-10 lg:p-14 shadow-glow">
+          <div class="grid gap-8 lg:grid-cols-2 lg:items-center">
+            <div>
+              <p class="text-sm font-bold tracking-[0.25em] text-gold uppercase">CTA Final</p>
+              <h2 class="mt-4 text-3xl sm:text-4xl lg:text-5xl font-black tracking-tight text-white leading-tight">
+                Sua marca pode estar ao lado de um atleta que representa disciplina, superação e resultado.
+              </h2>
+            </div>
+            <div class="flex lg:justify-end">
+              <a href="https://wa.me/5527998805788" class="inline-flex w-full sm:w-auto items-center justify-center gap-3 rounded-2xl bg-green-500 px-8 py-5 text-lg font-black text-white shadow-lg shadow-green-500/20 transition-all duration-300 hover:-translate-y-0.5">
+                <span aria-hidden="true">✆</span>
+                Falar no WhatsApp
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- WHATSAPP FLOATING BUTTON -->
+  <a id="floatingWhats" href="https://wa.me/5527998805788" class="fixed bottom-5 right-5 z-50 inline-flex h-14 w-14 items-center justify-center rounded-full bg-green-500 text-white shadow-lg shadow-green-500/30 transition-transform duration-300 hover:scale-105" aria-label="Falar no WhatsApp">
+    <span class="text-2xl" aria-hidden="true">✆</span>
+  </a>
+
+  <footer class="border-t hairline px-4 sm:px-6 lg:px-8 py-8">
+    <div class="mx-auto max-w-7xl flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between text-sm text-white/45">
+      <p>Adrian Filipe Costa Rafalsky • Portfólio premium para captação de patrocínio</p>
+      <p>Cariacica - ES • Jiu-Jitsu</p>
+    </div>
+  </footer>
+
+  <script>
+    (function () {
+      const menuBtn = document.getElementById('menuBtn');
+      const mobileMenu = document.getElementById('mobileMenu');
+      const navLinks = document.querySelectorAll('a[href^="#"]');
+      const revealEls = document.querySelectorAll('.reveal');
+
+      function closeMenu() {
+        if (!mobileMenu) return;
+        mobileMenu.classList.remove('open');
+        if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+      }
+
+      if (menuBtn && mobileMenu) {
+        menuBtn.addEventListener('click', function () {
+          const isOpen = mobileMenu.classList.toggle('open');
+          menuBtn.setAttribute('aria-expanded', String(isOpen));
+        });
+      }
+
+      navLinks.forEach(function (link) {
+        link.addEventListener('click', function () {
+          closeMenu();
+        });
+      });
+
+      const observer = new IntersectionObserver(function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, {
+        threshold: 0.12,
+        rootMargin: '0px 0px -80px 0px'
+      });
+
+      revealEls.forEach(function (el) {
+        observer.observe(el);
+      });
+
+      // Smooth scroll fallback for older browsers and fixed header offset
+      navLinks.forEach(function (anchor) {
+        anchor.addEventListener('click', function (e) {
+          const targetId = anchor.getAttribute('href');
+          if (!targetId || targetId === '#') return;
+          const target = document.querySelector(targetId);
+          if (!target) return;
+          e.preventDefault();
+
+          const headerOffset = 84;
+          const elementPosition = target.getBoundingClientRect().top + window.pageYOffset;
+          const offsetPosition = elementPosition - headerOffset;
+
+          window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+          history.pushState(null, '', targetId);
+        });
+      });
+
+      // Keep floating button always available; no extra JS needed, but hook left here for easy future control.
+      const floatingWhats = document.getElementById('floatingWhats');
+      if (floatingWhats) {
+        floatingWhats.addEventListener('click', function () {
+          // Intentionally lightweight.
+        });
+      }
+    })();
+  </script>
+</body>
+</html>
